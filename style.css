@@ -1,29 +1,72 @@
 body {
     font-family: Arial;
+    background: #f4f4f4;
     text-align: center;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#timer {
+    font-weight: bold;
 }
 
 #sudoku-board {
     display: grid;
-    grid-template-columns: repeat(9, 40px);
-    grid-template-rows: repeat(9, 40px);
-    gap: 2px;
+    grid-template-columns: repeat(9, 45px);
+    grid-template-rows: repeat(9, 45px);
     justify-content: center;
-    margin-top: 20px;
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     text-align: center;
     font-size: 18px;
+    border: 1px solid #999;
+    outline: none;
+}
+
+.cell:hover {
+    background: #e3f2fd;
+}
+
+.cell:focus {
+    background: #bbdefb;
+}
+
+/* 🧩 حدود 3×3 */
+.cell:nth-child(3n) {
+    border-right: 3px solid black;
+}
+
+.cell:nth-child(9n) {
+    border-right: none;
+}
+
+#sudoku-board div:nth-child(n+19):nth-child(-n+27),
+#sudoku-board div:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 3px solid black;
 }
 
 .fixed {
-    background-color: #ddd;
+    background: #ddd;
     font-weight: bold;
 }
 
 .error {
-    background-color: #ffb3b3;
+    background: #ffb3b3;
 }
