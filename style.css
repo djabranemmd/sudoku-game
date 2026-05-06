@@ -18,3 +18,8 @@ body {
     text-align: center;
     font-size: 18px;
 }
+
+.fixed {
+    background-color: #ddd;
+    font-weight: bold;
+}
