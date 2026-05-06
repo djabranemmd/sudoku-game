@@ -55,16 +55,19 @@ sudoku-game/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/djabranemmd/sudoku-game.git
+git clone https://github.com/djabranemmd/sudoku-game.git"
+```
 
 2. Go to project folder:
+```bash
 cd sudoku-game
-
+```
 3. Open index.html in your browser.
 
 ---
 
 ### 📌 Future Improvements
+
 Hint system 💡
 Auto-solve feature 🧠
 Random Sudoku generator 🔀
@@ -76,4 +79,3 @@ Animations for win screen 🎉
 ### 👨‍💻 Author
 
 Developed by a web development learner focused on improving JavaScript logic and frontend skills.
-```
