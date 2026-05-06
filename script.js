@@ -1,17 +1,17 @@
 const board = document.getElementById("sudoku-board");
 
 const puzzle = [
-  [5, 3, 0, 0, 7, 0, 0, 0, 0],
-  [6, 0, 0, 1, 9, 5, 0, 0, 0],
-  [0, 9, 8, 0, 0, 0, 0, 6, 0],
+  [5,3,0, 0,7,0, 0,0,0],
+  [6,0,0, 1,9,5, 0,0,0],
+  [0,9,8, 0,0,0, 0,6,0],
 
-  [8, 0, 0, 0, 6, 0, 0, 0, 3],
-  [4, 0, 0, 8, 0, 3, 0, 0, 1],
-  [7, 0, 0, 0, 2, 0, 0, 0, 6],
+  [8,0,0, 0,6,0, 0,0,3],
+  [4,0,0, 8,0,3, 0,0,1],
+  [7,0,0, 0,2,0, 0,0,6],
 
-  [0, 6, 0, 0, 0, 0, 2, 8, 0],
-  [0, 0, 0, 4, 1, 9, 0, 0, 5],
-  [0, 0, 0, 0, 8, 0, 0, 7, 9],
+  [0,6,0, 0,0,0, 2,8,0],
+  [0,0,0, 4,1,9, 0,0,5],
+  [0,0,0, 0,8,0, 0,7,9]
 ];
 
 function createBoard() {
@@ -19,6 +19,7 @@ function createBoard() {
 
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
+
       const cell = document.createElement("input");
       cell.type = "text";
       cell.maxLength = 1;
@@ -58,6 +59,10 @@ function createBoard() {
         } else {
           cell.classList.remove("error");
         }
+
+        if (checkWin()) {
+          showWinMessage();
+        }
       });
 
       board.appendChild(cell);
@@ -89,7 +94,6 @@ function isValidRow(boardValues, row, num) {
   return true;
 }
 
-// ✅ التحقق من العمود
 function isValidCol(boardValues, col, num) {
   for (let row = 0; row < 9; row++) {
     if (boardValues[row][col] == num) {
@@ -111,6 +115,28 @@ function isValidBox(boardValues, row, col, num) {
     }
   }
   return true;
+}
+
+function checkWin() {
+  const cells = document.querySelectorAll(".cell");
+
+  for (let cell of cells) {
+    if (cell.value === "") {
+      return false;
+    }
+
+    if (cell.classList.contains("error")) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function showWinMessage() {
+  setTimeout(() => {
+    alert("🎉 Congratulations! You solved the Sudoku!");
+  }, 100);
 }
 
 createBoard();
