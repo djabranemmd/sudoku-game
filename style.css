@@ -70,3 +70,11 @@ h1 {
 .error {
     background: #ffb3b3;
 }
+
+.border-right {
+    border-right: 3px solid black !important;
+}
+
+.border-bottom {
+    border-bottom: 3px solid black !important;
+}

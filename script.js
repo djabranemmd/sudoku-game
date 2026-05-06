@@ -70,6 +70,14 @@ function createBoard() {
       cell.dataset.row = row;
       cell.dataset.col = col;
 
+      if ((col + 1) % 3 === 0 && col !== 8) {
+        cell.classList.add("border-right");
+      }
+
+      if ((row + 1) % 3 === 0 && row !== 8) {
+        cell.classList.add("border-bottom");
+      }
+
       if (currentPuzzle[row][col] !== 0) {
         cell.value = currentPuzzle[row][col];
         cell.disabled = true;
@@ -84,16 +92,16 @@ function createBoard() {
           return;
         }
 
-        const row = +cell.dataset.row;
-        const col = +cell.dataset.col;
+        const r = +cell.dataset.row;
+        const c = +cell.dataset.col;
 
         const boardValues = getBoardValues();
-        boardValues[row][col] = 0;
+        boardValues[r][c] = 0;
 
         if (
-          !isValidRow(boardValues, row, value) ||
-          !isValidCol(boardValues, col, value) ||
-          !isValidBox(boardValues, row, col, value)
+          !isValidRow(boardValues, r, value) ||
+          !isValidCol(boardValues, c, value) ||
+          !isValidBox(boardValues, r, c, value)
         ) {
           cell.classList.add("error");
         } else {
@@ -161,7 +169,6 @@ function checkWin() {
 
 function startGame() {
   currentPuzzle = JSON.parse(JSON.stringify(puzzles[difficultySelect.value]));
-
   startTimer();
   createBoard();
 }
